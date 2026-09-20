@@ -1,0 +1,73 @@
+Pipeline Control Center 1.0.0 — QA REPORT
+
+Static/package checks: 54/54 PASS
+
+[PASS] file index.html
+[PASS] file desktop.html
+[PASS] file app.js
+[PASS] file styles.css
+[PASS] file jszip.min.js
+[PASS] file presentation-viewer-template.html
+[PASS] file viewer-current.html
+[PASS] file run.bat
+[PASS] file package.json
+[PASS] file electron/main.js
+[PASS] file .github/workflows/windows-build.yml
+[PASS] file README.md
+[PASS] file BUILD-WINDOWS.md
+[PASS] file CHANGELOG.md
+[PASS] file VERSION.txt
+[PASS] no project/runtime legacy ax-1405.05.07.kmz
+[PASS] no project/runtime legacy base-axis.js
+[PASS] no project/runtime legacy server.py
+[PASS] node syntax app.js
+[PASS] node syntax electron/main.js
+[PASS] index.html inline app present
+[PASS] index.html inline app matches source
+[PASS] index.html inline css matches source
+[PASS] index.html inline app syntax
+[PASS] desktop.html inline app present
+[PASS] desktop.html inline app matches source
+[PASS] desktop.html inline css matches source
+[PASS] desktop.html inline app syntax
+[PASS] no stale term عجب
+[PASS] no stale term تبریز
+[PASS] no stale term 56 اینچ
+[PASS] no stale term 42 اینچ
+[PASS] no stale term AX 1405
+[PASS] no stale term ax-1405
+[PASS] no stale term pipeline-control-center-v8
+[PASS] no stale term V8.4
+[PASS] version 1.0.0 in app
+[PASS] generic DB
+[PASS] generic empty axes default
+[PASS] multi-route apply exists
+[PASS] about GitHub ID
+[PASS] about creator Persian
+[PASS] viewer snapshot placeholder
+[PASS] viewer excludes sequence UI
+[PASS] package version
+[PASS] electron main
+[PASS] leaflet desktop dependency
+[PASS] rotate desktop dependency
+[PASS] electron version pinned
+[PASS] builder version pinned
+[PASS] desktop local leaflet
+[PASS] desktop local rotate
+[PASS] GitHub Actions YAML parses
+[PASS] viewer-current inline script 0 syntax
+
+Browser core test (Chromium, PCC_NO_BOOT):
+[PASS] blank initial state -> 0 routes
+[PASS] synthetic KML with 3 named LineStrings -> 3 route candidates
+[PASS] arbitrary route keys/names normalize correctly
+[PASS] generated Presentation Viewer contains route/project snapshot
+[PASS] generated Presentation Viewer contains no Sequence/Gap UI
+[PASS] browser core test reported no JavaScript page errors
+
+Runtime note:
+- Full online basemap boot was not exercised in this container because local/file navigation and external CDN access are restricted by the environment.
+- Windows EXE was not built locally because Electron/NSIS packages are not installed in this sandbox. GitHub Actions + local BUILD-EXE.bat are included and use pinned npm dependencies.
+- The Windows desktop build uses local Leaflet + leaflet-rotate packages; Engineering/None can run without map-tile internet after build. Online basemaps still need internet.
+
+Result: release source/package checks PASS.

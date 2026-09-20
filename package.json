@@ -1,0 +1,56 @@
+{
+  "name": "pipeline-control-center",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generic pipeline progress, route, feature and presentation control center for KML/KMZ projects.",
+  "author": {
+    "name": "Mostafa Erfani",
+    "url": "https://github.com/MOSTAFA5804"
+  },
+  "homepage": "https://github.com/MOSTAFA5804",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis",
+    "portable:win": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "44.4.2",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "io.github.mostafa5804.pipelinecontrolcenter",
+    "productName": "Pipeline Control Center",
+    "artifactName": "Pipeline-Control-Center-${version}-${arch}-Setup.${ext}",
+    "files": [
+      "desktop.html",
+      "electron/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "verifyUpdateCodeSignature": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Pipeline Control Center",
+      "uninstallDisplayName": "Pipeline Control Center"
+    }
+  },
+  "dependencies": {
+    "leaflet": "1.9.4",
+    "@tomickigrzegorz/leaflet-rotate": "0.2.4"
+  }
+}
