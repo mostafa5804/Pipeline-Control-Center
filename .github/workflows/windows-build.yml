@@ -1,13 +1,12 @@
-name: Build Windows EXE
+name: Build Windows Release
 
 on:
-  workflow_dispatch:
   push:
     tags:
-      - 'v*'
+      - 'V*'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   windows:
@@ -15,17 +14,42 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm'
+
+      - name: Read version from tag
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          if (-not $tag.StartsWith('V')) { throw "Release tag must start with uppercase V. Example: V1.0.1" }
+          $version = $tag.Substring(1)
+          if ($version -notmatch '^\d+\.\d+\.\d+([-.][0-9A-Za-z.-]+)?$') {
+            throw "Invalid version tag: $tag. Use a tag such as V1.0.1"
+          }
+          "APP_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append
+          npm version $version --no-git-tag-version
+
       - name: Install build dependencies
         run: npm install
+
       - name: Build Windows installer
         run: npm run dist:win
+
       - name: Upload installer artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Pipeline-Control-Center-Windows
+          name: Pipeline-Control-Center-${{ github.ref_name }}-Windows
           path: dist/*.exe
           if-no-files-found: error
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Pipeline Control Center ${{ github.ref_name }}
+          generate_release_notes: true
+          files: dist/*.exe
+          fail_on_unmatched_files: true
