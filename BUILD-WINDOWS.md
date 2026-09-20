@@ -8,7 +8,7 @@
 5. کامپیوتر مقصد فقط Setup/EXE را اجرا می‌کند و Python/Node.js لازم ندارد.
 
 ## روش 2 — GitHub Actions
-Repository را در GitHub منتشر کنید. از تب Actions، Workflow «Build Windows EXE» را Run کنید؛ یا Tag مثل `v1.0.0` Push کنید. فایل EXE در Artifact همان Run قرار می‌گیرد.
+Repository را در GitHub منتشر کنید. هر Tag جدیدی که با حرف بزرگ `V` شروع شود (مثلاً `V1.0.1`) Workflow را اجرا می‌کند. نسخه از نام Tag خوانده می‌شود، Windows Installer ساخته می‌شود و EXE هم در Artifact و هم در GitHub Release قرار می‌گیرد.
 
 ## نکته انتشار
 Installer فعلی بدون Code Signing ساخته می‌شود. Windows SmartScreen ممکن است برای یک ناشر جدید هشدار نشان دهد. این موضوع با Python ارتباطی ندارد؛ برای حذف هشدارهای ناشر باید بعداً Certificate امضای کد تهیه و تنظیم شود.
