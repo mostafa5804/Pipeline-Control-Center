@@ -30,7 +30,7 @@ jobs:
             throw "Invalid version tag: $tag. Use a tag such as V1.0.1"
           }
           "APP_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append
-          npm version $version --no-git-tag-version
+          npm version $version --no-git-tag-version --allow-same-version
 
       - name: Install build dependencies
         run: npm install
