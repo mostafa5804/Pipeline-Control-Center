@@ -1,6 +1,6 @@
 {
   "name": "pipeline-control-center",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Generic pipeline progress, route, feature and presentation control center for KML/KMZ projects.",
   "author": {
@@ -24,8 +24,8 @@
     "artifactName": "Pipeline-Control-Center-${version}-${arch}-Setup.${ext}",
     "files": [
       "desktop.html",
-      "electron/**/*",
-      "assets/**/*"
+      "assets/**/*",
+      "electron/**/*"
     ],
     "directories": {
       "output": "dist"
@@ -39,7 +39,8 @@
           ]
         }
       ],
-      "verifyUpdateCodeSignature": false
+      "verifyUpdateCodeSignature": false,
+      "icon": "assets/pipeline-control-center.ico"
     },
     "nsis": {
       "oneClick": false,
@@ -52,7 +53,9 @@
   },
   "dependencies": {
     "leaflet": "1.9.4",
-    "@tomickigrzegorz/leaflet-rotate": "0.2.4"
+    "@tomickigrzegorz/leaflet-rotate": "0.2.4",
+    "maplibre-gl": "5.14.0",
+    "@maplibre/maplibre-gl-leaflet": "0.1.4"
   },
   "repository": {
     "type": "git",
@@ -60,6 +63,5 @@
   },
   "bugs": {
     "url": "https://github.com/mostafa5804/Pipeline-Control-Center/issues"
-  },
-  "license": "MIT"
+  }
 }

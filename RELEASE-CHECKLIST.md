@@ -17,6 +17,6 @@
 
 1. Decide whether you want to add a `LICENSE` file. No license is included by default.
 2. Create the GitHub repository and upload the contents of this folder.
-3. Run `Actions → Build Windows EXE → Run workflow` or push tag `v1.0.0`.
+3. Push a release tag starting with uppercase `V`, for example `V1.0.0`. The workflow builds the Windows installer and publishes a GitHub Release automatically.
 4. Download the generated `.exe` artifact and test it on a clean Windows PC.
 5. Optional for wider public distribution: configure Windows code signing to reduce SmartScreen warnings.

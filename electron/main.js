@@ -13,6 +13,7 @@ function createWindow() {
     minHeight: 680,
     show: false,
     backgroundColor: '#f4f7fb',
+    icon: path.join(__dirname, '..', 'assets', 'pipeline-control-center-logo.png'),
     autoHideMenuBar: true,
     webPreferences: {
       contextIsolation: true,

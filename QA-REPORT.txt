@@ -71,3 +71,15 @@ Runtime note:
 - The Windows desktop build uses local Leaflet + leaflet-rotate packages; Engineering/None can run without map-tile internet after build. Online basemaps still need internet.
 
 Result: release source/package checks PASS.
+
+
+=== v1.0.1 MAP / KML PATCH QA ===
+[PASS] app.js JavaScript syntax check (node --check)
+[PASS] index.html embedded app JavaScript syntax check
+[PASS] desktop.html embedded app JavaScript syntax check
+[PASS] KML import null guard: lines=null, seqs=null returns []
+[PASS] 56-inch 3-segment synthetic route stitched to 9 route points
+[PASS] reversed-segment stitching test for 42-inch route
+[PASS] approved logo copied to assets and Windows .ico generated
+[PASS] Presentation Viewer template re-embedded after final map changes
+[NOTE] Live CDN/network rendering was not used as a release gate; online basemaps retain Engineering fallback.
