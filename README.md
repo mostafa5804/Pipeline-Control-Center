@@ -13,7 +13,7 @@
 برنامه بدون مسیر از پیش‌تعریف‌شده شروع می‌شود؛ KML/KMZ خودت را وارد می‌کنی، مسیرها را نام‌گذاری می‌کنی و کل پروژه را روی همان داده واقعی پیش می‌بری.
 
 [🚀 آخرین نسخه](https://github.com/mostafa5804/Pipeline-Control-Center/releases/latest) ·
-[🌐 نسخه HTML / Repository](https://github.com/mostafa5804/Pipeline-Control-Center) ·
+[🌐 نسخه HTML / Repository](https://mostafa5804.github.io/Pipeline-Control-Center/) ·
 [🐞 گزارش مشکل](https://github.com/mostafa5804/Pipeline-Control-Center/issues)
 
 </div>
