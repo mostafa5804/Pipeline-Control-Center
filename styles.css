@@ -295,3 +295,140 @@ body{font-size:14px}
   .settings-card input,.settings-card select,.settings-content-wrap .form-grid input,.settings-content-wrap .form-grid select{font-size:12px}
   .style-row{grid-template-columns:1fr 48px 68px}
 }
+
+
+/* v1.0.0 about fullscreen */
+#settings-about{
+  max-width:none;
+  margin:0;
+  min-height:calc(100vh - var(--header-h) - 60px);
+}
+#settings-about .settings-heading{
+  max-width:1180px;
+  margin:0 auto 22px;
+}
+#settings-about .settings-heading strong{
+  font-size:28px;
+  line-height:1.35;
+  letter-spacing:-.01em;
+}
+#settings-about .settings-heading span{
+  font-size:14px;
+  line-height:1.9;
+}
+#settings-about .about-card{
+  max-width:none;
+  width:100%;
+  min-height:calc(100vh - var(--header-h) - 150px);
+  margin:0;
+  padding:32px 36px 36px;
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+#settings-about .about-brand{
+  gap:16px;
+  margin-bottom:20px;
+}
+#settings-about .about-mark{
+  width:64px;
+  height:64px;
+  border-radius:16px;
+  font-size:16px;
+}
+#settings-about .about-brand strong{
+  font-size:24px;
+  line-height:1.35;
+}
+#settings-about .about-brand span{
+  font-size:13px;
+  margin-top:4px;
+}
+#settings-about .about-lead{
+  max-width:1050px;
+  font-size:15px;
+  line-height:2.05;
+  margin-bottom:22px;
+  color:#334155;
+}
+#settings-about .about-capabilities{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin:14px 0 18px;
+}
+#settings-about .about-capability{
+  min-height:150px;
+  padding:20px;
+  border-radius:16px;
+  background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);
+  box-shadow:0 8px 24px rgba(15,23,42,.045);
+}
+#settings-about .about-capability strong{
+  font-size:14px;
+  line-height:1.55;
+  margin-bottom:8px;
+}
+#settings-about .about-capability span{
+  font-size:12.5px;
+  line-height:1.95;
+}
+#settings-about .about-local-note{
+  max-width:1050px;
+  margin-top:4px;
+  padding:16px 18px;
+  border-radius:14px;
+  font-size:12.5px;
+  line-height:2;
+}
+#settings-about .about-local-note strong{
+  font-size:13px;
+  margin-bottom:4px;
+}
+#settings-about .creator-card{
+  margin-top:auto;
+  padding:18px 20px;
+  border-radius:16px;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  gap:14px;
+}
+#settings-about .creator-card>span{
+  font-size:11px;
+}
+#settings-about .creator-card .creator-copy strong{
+  font-size:15px;
+  line-height:1.5;
+}
+#settings-about .creator-card .creator-copy small{
+  font-size:11px;
+  margin-top:3px;
+}
+#settings-about .github-link{
+  min-height:44px;
+  padding:10px 14px;
+  font-size:11.5px;
+  border-radius:11px;
+}
+#settings-about .github-link svg{
+  width:20px;
+  height:20px;
+}
+@media(max-width:980px){
+  #settings-about .about-capabilities{grid-template-columns:1fr}
+  #settings-about .about-capability{min-height:auto}
+  #settings-about .creator-card{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  #settings-about{min-height:auto}
+  #settings-about .settings-heading strong{font-size:22px}
+  #settings-about .settings-heading span{font-size:11.5px}
+  #settings-about .about-card{min-height:auto;padding:20px 15px;border-radius:16px}
+  #settings-about .about-mark{width:52px;height:52px;font-size:13px}
+  #settings-about .about-brand strong{font-size:19px}
+  #settings-about .about-brand span{font-size:11px}
+  #settings-about .about-lead{font-size:13px;line-height:1.95}
+  #settings-about .about-capability{padding:15px}
+  #settings-about .about-capability strong{font-size:13px}
+  #settings-about .about-capability span{font-size:11.5px}
+  #settings-about .about-local-note{font-size:11.5px}
+}
