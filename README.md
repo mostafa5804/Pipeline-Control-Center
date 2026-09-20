@@ -1,69 +1,218 @@
-# Pipeline Control Center — v1.0.1
+<div align="center">
 
-<p align="center"><img src="assets/pipeline-control-center-logo.png" alt="Pipeline Control Center" width="150"></p>
+<p align="center">
+  <img src="assets/pipeline-control-center-logo.png" alt="Pipeline Control Center" width="260">
+</p>
 
-یک ابزار عمومی برای مدیریت و ارائه پیشرفت پروژه‌های خط لوله روی نقشه.
+# 🛠️ Pipeline Control Center
 
-## شروع کار
+### مدیریت مسیر، پیشرفت، عوارض و ارائه مدیریتی پروژه‌های خط لوله
 
-برنامه به‌صورت **خام** منتشر می‌شود و هیچ مسیر پروژه‌ای از پیش داخل آن وجود ندارد. از بخش «مدیریت → Import مسیر» یک فایل KML یا KMZ وارد کنید. برنامه LineStringها و توالی‌های Station قابل استفاده را Preview می‌کند؛ می‌توانید یک یا چند مسیر را انتخاب کنید، نام هر مسیر را تغییر دهید و سپس جبهه‌های اجرایی و عوارض را ثبت کنید.
+[![Version](https://img.shields.io/badge/version-1.0.0-0f766e?style=for-the-badge)](https://github.com/mostafa5804/Pipeline-Control-Center/releases/latest)
+[![Windows](https://img.shields.io/badge/Windows-EXE-2563eb?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/mostafa5804/Pipeline-Control-Center/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-f59e0b?style=for-the-badge)](LICENSE)
+[![GitHub](https://img.shields.io/badge/GitHub-mostafa5804-181717?style=for-the-badge&logo=github)](https://github.com/mostafa5804/Pipeline-Control-Center)
 
-### قابلیت‌های اصلی
+**Pipeline Control Center** یک نرم‌افزار عمومی و پروژه‌مستقل برای کنترل مکانی و مدیریتی پروژه‌های خط لوله است.  
+برنامه بدون مسیر از پیش‌تعریف‌شده شروع می‌شود؛ KML/KMZ خودت را وارد می‌کنی، مسیرها را نام‌گذاری می‌کنی و کل پروژه را روی همان داده واقعی پیش می‌بری.
 
-- Import امن و چندمسیره KML/KMZ با Preview و نام‌گذاری مسیرها
-- نمایش KP، چند Activity هم‌زمان، عکس‌های جبهه/عارضه و عوارض آزاد خارج از مسیر
-- Timeline تاریخ‌محور و Gap / Sequence Control در بخش مدیریت
-- Meeting Mode و خروجی تک‌فایل Presentation HTML فقط‌خواندنی
-- Backup/Restore JSON و ذخیره داده‌ها در IndexedDB
-- کتابخانه تخصصی آیکن‌های خط لوله، ماشین‌آلات، نقشه‌برداری و HSE
+[🚀 آخرین نسخه](https://github.com/mostafa5804/Pipeline-Control-Center/releases/latest) ·
+[🌐 نسخه HTML / Repository](https://mostafa5804.github.io/Pipeline-Control-Center/) ·
+[🐞 گزارش مشکل](https://github.com/mostafa5804/Pipeline-Control-Center/issues)
 
-## اجرای نسخه HTML
+</div>
 
-`run.bat` را اجرا کنید یا `index.html` را باز کنید. Python لازم نیست.
+---
 
-> نسخه HTML خام برای موتور Leaflet از CDN استفاده می‌کند. در نسخه Windows/Electron، Leaflet و موتور Rotation به‌صورت محلی همراه برنامه بسته‌بندی می‌شوند؛ بنابراین خود رابط و پس‌زمینه Engineering/None بدون اینترنت اجرا می‌شوند. Basemapهای آنلاین به اینترنت نیاز دارند. علاوه بر Esri/OSM/OpenTopo/CARTO، گزینه‌های OpenFreeMap، NASA GIBS، MapTiler (با API Key)، Google Hybrid و Custom XYZ نیز در تنظیمات نقشه موجود است.
+## ✨ چرا Pipeline Control Center؟
 
+این ابزار برای زمانی ساخته شده که یک فایل مسیر داری و می‌خواهی بدون راه‌اندازی GIS سنگین یا ساخت داشبورد اختصاصی، وضعیت پروژه را به‌صورت قابل فهم روی نقشه مدیریت و ارائه کنی.
 
-### نقشه‌های پس‌زمینه
+- 🗺️ **چندمسیره و پروژه‌مستقل** — ورود یک یا چند مسیر از KML/KMZ با Preview، انتخاب گروهی و نام‌گذاری
+- 📍 **کنترل کیلومتراژ و جبهه‌ها** — ثبت بازه‌های اجرایی بر اساس KP و نمایش مستقیم روی مسیر
+- 🧩 **عوارض و نقاط آزاد** — ثبت تقاطع‌ها، ایستگاه‌ها، ماشین‌آلات، Benchmark، کمپ و نقاط خارج از محور
+- 📸 **مستندات تصویری** — تا ۴ عکس برای هر جبهه یا عارضه با نمایش داخل Viewer
+- 🕒 **Timeline** — مشاهده وضعیت پروژه در تاریخ‌های مختلف
+- 🔗 **Gap / Sequence Control** — تحلیل توالی فعالیت‌های اجرایی در بخش مدیریت
+- 🎛️ **Meeting Mode** — نمایش تمیز و مدیریتی برای جلسه و ارائه
+- 📤 **Presentation HTML** — خروجی تک‌فایل فقط‌خواندنی برای ارسال به دیگران
+- 💾 **Backup / Restore** — ذخیره و بازیابی کامل اطلاعات پروژه
+- 🖥️ **Windows App** — قابلیت Build به EXE بدون نیاز کاربران نهایی به Python یا Node.js
 
-- **Esri Satellite / Hybrid**: گزینه عمومی و مناسب برای کار روزمره پروژه.
-- **OpenFreeMap**: نقشه برداری وکتوری آزاد و بدون API Key.
-- **MapTiler Satellite / Hybrid**: کیفیت خوب؛ نیازمند API Key حساب MapTiler.
-- **NASA GIBS**: تصویر ماهواره‌ای روزانه برای دید کلی؛ به علت رزولوشن، برای کنترل مهندسی در زوم بالا مناسب نیست.
-- **Custom XYZ**: برای Tile Server داخلی، سازمانی یا سرویس‌های GIS دیگر.
-- **Engineering / None**: بدون اینترنت.
+---
 
-در صورت اختلال یک Basemap آنلاین، قابلیت fallback به پس‌زمینه Engineering فعال است.
+## 🚀 شروع سریع
 
-## انتقال پروژه‌های نسخه‌های قبلی
+### 1) نسخه Windows
 
-اگر پروژه‌ای را در نسخه 8.x ساخته‌اید، از نسخه قبلی **Backup JSON** بگیرید و در v1.0.1 از بخش «داده و خروجی → Restore Backup» وارد کنید. مسیرهای قدیمی هم به‌عنوان مسیرهای عادی این نسخه شناخته می‌شوند.
+به صفحه آخرین Release برو و فایل Setup را دانلود کن:
 
-## ساخت Windows EXE
+👉 **[Download Latest Release](https://github.com/mostafa5804/Pipeline-Control-Center/releases/latest)**
 
-روی **سیستم Build** یک‌بار Node.js نصب کنید و `BUILD-EXE.bat` را اجرا کنید. خروجی در پوشه `dist` ساخته می‌شود. سیستم‌هایی که فایل Setup/EXE نهایی را نصب می‌کنند به Python یا Node.js نیاز ندارند.
+پس از نصب، برنامه مستقل اجرا می‌شود. Python و Node.js فقط برای توسعه و Build لازم هستند، نه برای کاربر نهایی.
 
-همچنین Workflow آماده GitHub Actions در `.github/workflows/windows-build.yml` وجود دارد؛ با اجرای دستی Workflow یا Push کردن Tag مثل `V1.0.1`، GitHub روی Windows فایل EXE را Build می‌کند، آن را به‌عنوان Artifact نگه می‌دارد و همان EXE را در GitHub Release مربوط به Tag منتشر می‌کند.
+### 2) نسخه HTML
 
-## سازنده
+Repository را Clone یا Download کن و `index.html` را اجرا کن. برای اجرای مطمئن‌تر می‌توانی از `run.bat` استفاده کنی.
 
-**مصطفی عرفانی (Mostafa Erfani)**  
-GitHub: **mostafa5804/Pipeline-Control-Center** — https://github.com/mostafa5804/Pipeline-Control-Center — https://github.com/mostafa5804/Pipeline-Control-Center
+> Basemapهای آنلاین به اینترنت وابسته‌اند. داده پروژه، مسیرها، جبهه‌ها، عوارض و تصاویر به‌صورت محلی روی دستگاه نگهداری می‌شوند.
 
-## مجوز
+---
 
-این پروژه تحت مجوز **MIT License** منتشر شده است؛ متن کامل در فایل `LICENSE` مخزن قرار دارد.
+## 🧭 روند کار
 
+```text
+KML / KMZ
+   ↓
+Preview مسیرها
+   ↓
+انتخاب همه / عدم انتخاب همه
+   ↓
+نام‌گذاری مسیرها
+   ↓
+ثبت جبهه‌ها و عوارض
+   ↓
+Timeline / کنترل توالی
+   ↓
+Meeting Mode
+   ↓
+Presentation HTML
+```
 
-## انتشار نسخه Windows با Tag
+---
 
-Workflow در `.github/workflows/windows-build.yml` فقط با Tagهایی که با حرف بزرگ **`V`** شروع می‌شوند اجرا می‌شود. مثال:
+## 🗺️ Import مسیر
+
+برنامه با پروژه خالی شروع می‌شود و هیچ محور ثابتی داخل آن وجود ندارد.
+
+هنگام Import:
+
+1. فایل `KML` یا `KMZ` را انتخاب کن.
+2. LineStringها و Stationهای قابل استفاده شناسایی می‌شوند.
+3. مسیرهای پیشنهادی در Preview نمایش داده می‌شوند.
+4. با **انتخاب همه / عدم انتخاب همه** مسیرهای موردنظر را سریع مشخص کن.
+5. برای هر مسیر یک نام دلخواه تعیین کن.
+6. مسیرها را به پروژه اضافه کن و ادامه بده.
+
+می‌توانی بعداً فایل‌های دیگری هم اضافه کنی و پروژه را چندمسیره نگه داری.
+
+---
+
+## 📊 قابلیت‌های مدیریتی
+
+| بخش | کاربرد |
+|---|---|
+| 🛣️ مسیرها | مدیریت چند محور، استایل، نمایش و نام‌گذاری |
+| 🚧 جبهه‌ها | ثبت بازه اجرایی، Activity، وضعیت، تاریخ و عکس |
+| 📌 عوارض | ثبت عارضه روی محور یا آزاد روی نقشه |
+| 🕒 Timeline | بازسازی وضعیت پروژه تا تاریخ انتخابی |
+| 🔗 Sequence | بررسی Backlog و مغایرت توالی فعالیت‌ها |
+| 🎥 Meeting | نمایش مدیریتی بدون ابزارهای ویرایشی |
+| 📤 Viewer | خروجی HTML فقط‌خواندنی و قابل ارسال |
+| 💾 Data | Backup / Restore کامل پروژه |
+
+---
+
+## 🖥️ ساخت نسخه Windows
+
+ساخت EXE با Electron انجام می‌شود.
+
+### Build محلی
+
+```bash
+npm install
+npm run dist:win
+```
+
+یا روی Windows:
+
+```text
+BUILD-EXE.bat
+```
+
+خروجی داخل پوشه `dist` قرار می‌گیرد.
+
+### Build خودکار با GitHub Actions
+
+Workflow داخل:
+
+```text
+.github/workflows/windows-build.yml
+```
+
+با هر Tag جدیدی که با **V بزرگ** شروع شود، Build و Release خودکار انجام می‌شود:
 
 ```bash
 git tag V1.0.1
 git push origin V1.0.1
 ```
 
-GitHub Actions نسخه را از نام Tag استخراج می‌کند، Windows Installer را Build می‌کند و فایل EXE را به‌صورت خودکار داخل GitHub Release همان Tag منتشر می‌کند.
+GitHub Actions نسخه را از Tag استخراج می‌کند، Installer ویندوز را می‌سازد و EXE را در Release همان Tag قرار می‌دهد.
 
-Repository: https://github.com/mostafa5804/Pipeline-Control-Center
+---
+
+## 🔐 داده و حریم خصوصی
+
+Pipeline Control Center به‌صورت **Local-first** طراحی شده است.
+
+- اطلاعات پروژه روی دستگاه کاربر ذخیره می‌شود.
+- برنامه برای ذخیره داده‌های پروژه به سرور مرکزی وابسته نیست.
+- تصاویر و اطلاعات پروژه در Backup و Presentation HTML قابل انتقال هستند.
+- فقط سرویس‌های Basemap آنلاین، در صورت انتخاب کاربر، نیاز به اینترنت دارند.
+
+---
+
+## 🧰 تکنولوژی‌ها
+
+- HTML / CSS / JavaScript
+- Leaflet
+- IndexedDB
+- JSZip
+- Electron
+- GitHub Actions
+- Electron Builder
+
+---
+
+## 👤 سازنده
+
+**Mostafa Erfani — مصطفی عرفانی**
+
+[![GitHub](https://img.shields.io/badge/GitHub-mostafa5804-181717?style=flat-square&logo=github)](https://github.com/mostafa5804/Pipeline-Control-Center)
+
+Repository:  
+**https://github.com/mostafa5804/Pipeline-Control-Center**
+
+---
+
+## 🤝 مشارکت
+
+Issue و Pull Request خوش‌آمد هستند. اگر Bug، ایده یا پیشنهاد بهبود داری:
+
+- 🐞 [Open an Issue](https://github.com/mostafa5804/Pipeline-Control-Center/issues)
+- 🍴 Fork the repository
+- 🔧 Create a branch
+- 📬 Submit a Pull Request
+
+---
+
+## 📄 License
+
+این پروژه تحت مجوز **MIT License** منتشر می‌شود.
+
+MIT اجازه استفاده، تغییر، توزیع و استفاده تجاری از پروژه را می‌دهد، به شرط حفظ متن مجوز و اعلان Copyright.
+
+👉 [مشاهده LICENSE](LICENSE)
+
+---
+
+<div align="center">
+
+### Pipeline Control Center
+
+**From route geometry to project control.**
+
+[⬇️ Latest Release](https://github.com/mostafa5804/Pipeline-Control-Center/releases/latest) ·
+[⭐ Repository](https://github.com/mostafa5804/Pipeline-Control-Center)
+
+</div>
