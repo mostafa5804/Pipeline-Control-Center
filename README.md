@@ -1,5 +1,9 @@
 <div align="center">
 
+<p align="center">
+  <img src="assets/pipeline-control-center-logo.png" alt="Pipeline Control Center" width="260">
+</p>
+
 # 🛠️ Pipeline Control Center
 
 ### مدیریت مسیر، پیشرفت، عوارض و ارائه مدیریتی پروژه‌های خط لوله
