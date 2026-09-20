@@ -5,9 +5,9 @@
   "description": "Generic pipeline progress, route, feature and presentation control center for KML/KMZ projects.",
   "author": {
     "name": "Mostafa Erfani",
-    "url": "https://github.com/MOSTAFA5804"
+    "url": "https://github.com/mostafa5804/Pipeline-Control-Center"
   },
-  "homepage": "https://github.com/MOSTAFA5804",
+  "homepage": "https://github.com/mostafa5804/Pipeline-Control-Center",
   "main": "electron/main.js",
   "scripts": {
     "start": "electron .",
@@ -52,5 +52,12 @@
   "dependencies": {
     "leaflet": "1.9.4",
     "@tomickigrzegorz/leaflet-rotate": "0.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mostafa5804/Pipeline-Control-Center.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mostafa5804/Pipeline-Control-Center/issues"
   }
 }
