@@ -3,7 +3,7 @@ name: Build Windows Release
 on:
   push:
     tags:
-      - 'V*'
+      - '*.*.*'
 
 permissions:
   contents: write
@@ -24,10 +24,9 @@ jobs:
         shell: pwsh
         run: |
           $tag = "${{ github.ref_name }}"
-          if (-not $tag.StartsWith('V')) { throw "Release tag must start with uppercase V. Example: V1.0.1" }
-          $version = $tag.Substring(1)
+          $version = $tag -replace '^[Vv]', ''
           if ($version -notmatch '^\d+\.\d+\.\d+([-.][0-9A-Za-z.-]+)?$') {
-            throw "Invalid version tag: $tag. Use a tag such as V1.0.1"
+            throw "Invalid version tag: $tag. Use a tag such as 1.0.1, v1.0.1 or V1.0.1"
           }
           "APP_VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Append
           npm version $version --no-git-tag-version --allow-same-version
