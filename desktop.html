@@ -10,6 +10,7 @@
 <meta content="1.0.0" name="pcc-build"/>
 <title>Pipeline Control Center 1.0.0</title>
 <meta content="#0f172a" name="theme-color"/>
+<link rel="icon" type="image/png" href="assets/pipeline-control-center-logo.png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
@@ -451,13 +452,38 @@ body{font-size:14px}
   #settings-about .about-local-note{font-size:11.5px}
 }
 
+
+/* v1.0.0 product logo */
+.app-logo{
+  width:40px;
+  height:40px;
+  object-fit:contain;
+  border-radius:10px;
+  background:#fff;
+  box-shadow:0 7px 18px rgba(15,23,42,.10);
+  flex:0 0 auto;
+}
+#settings-about .about-logo{
+  width:96px;
+  height:96px;
+  object-fit:contain;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 12px 30px rgba(15,23,42,.10);
+  flex:0 0 auto;
+}
+@media(max-width:720px){
+  .app-logo{width:34px;height:34px;border-radius:8px}
+  #settings-about .about-logo{width:72px;height:72px;border-radius:14px}
+}
+
 </style>
 </head>
 <body>
 <div class="boot-error hidden" id="bootError"></div>
 <header class="app-header" id="appHeader">
 <div class="brand-block">
-<div class="brand-mark">PCC</div>
+<img class="app-logo" src="assets/pipeline-control-center-logo.png" alt="Pipeline Control Center logo">
 <div><strong id="appTitle">Pipeline Control Center</strong><span id="appProjectShort">پروژه خط لوله</span></div>
 </div>
 <nav aria-label="ناوبری اصلی" class="main-nav">
@@ -616,7 +642,7 @@ body{font-size:14px}
 <div class="settings-pane" id="settings-about">
 <div class="settings-heading"><strong>درباره Pipeline Control Center</strong><span>سامانه مستقل کنترل مکانی، پیشرفت و ارائه مدیریتی پروژه‌های خط لوله</span></div>
 <div class="settings-card about-card">
-<div class="about-brand"><div class="brand-mark about-mark">PCC</div><div><strong>Pipeline Control Center</strong><span>Version 1.0.0</span></div></div>
+<div class="about-brand"><img class="about-logo" src="assets/pipeline-control-center-logo.png" alt="Pipeline Control Center logo"><div><strong>Pipeline Control Center</strong><span>Version 1.0.0</span></div></div>
 <p class="about-lead">Pipeline Control Center یک ابزار عمومی و پروژه‌مستقل برای مدیریت مسیر، پیشرفت اجرایی و عوارض پروژه‌های خط لوله است. برنامه با یک پروژه خام شروع می‌شود و به هیچ محور یا دیتاست از پیش‌تعریف‌شده وابسته نیست؛ کاربر می‌تواند یک یا چند مسیر KML/KMZ را وارد و نام‌گذاری کند و سپس اطلاعات اجرایی پروژه را روی همان مسیرها توسعه دهد.</p>
 <div class="about-capabilities">
 <div class="about-capability"><strong>کنترل مسیر و عملیات</strong><span>مدیریت چند مسیر، جبهه‌های اجرایی، کیلومتراژ، Activityها، Timeline و کنترل توالی عملیات.</span></div>
@@ -883,8 +909,9 @@ function importCandidates(parsed,fileName){parsed=parsed&&typeof parsed==='objec
 function drawImportPreview(candidates){groups.preview.clearLayers();const bounds=[];candidates.forEach((c,i)=>{if(!c.axis?.coords?.length)return;const l=L.polyline(c.axis.coords,{color:PALETTE[i%PALETTE.length],weight:5,opacity:.88,dashArray:'10 7',smoothFactor:0,interactive:false}).addTo(groups.preview);bounds.push(l.getBounds())});if(bounds.length){let b=bounds[0];for(let i=1;i<bounds.length;i++)b=b.extend(bounds[i]);map.fitBounds(b,{padding:[35,35],maxZoom:13})}}
 function candidateText(ax){return ax?`${formatKP(ax.total)} · ${ax.coords.length} نقطه${ax.measured?' · Station':''}`:'—'}
 async function importAxisFile(file){if(!file)return;$('importStatus').textContent='در حال بررسی فایل…';try{let text;if(file.name.toLowerCase().endsWith('.kmz')){if(!window.JSZip)throw new Error('JSZip در دسترس نیست.');const z=await JSZip.loadAsync(await file.arrayBuffer()),name=Object.keys(z.files).find(x=>x.toLowerCase().endsWith('.kml'));if(!name)throw new Error('داخل KMZ فایل KML پیدا نشد.');text=await z.files[name].async('text')}else text=await file.text();const parsed=parseKML(text),c=importCandidates(parsed,file.name);if(!c.length)throw new Error('هیچ مسیر LineString یا Station قابل استفاده در فایل پیدا نشد.');pendingImport={fileName:file.name,candidates:c};$('previewFileName').textContent=file.name;$('previewMeta').textContent=`${parsed.lines.length} LineString · ${parsed.seqs.length} توالی Station · ${c.length} کاندید`;renderImportCandidateList();$('importPreview').classList.remove('hidden');$('importStatus').textContent='Preview آماده است؛ مسیرهای فعلی هنوز تغییر نکرده‌اند.';drawImportPreview(c);toast('فایل فقط Preview شد؛ مسیرهای موردنظر را انتخاب و نام‌گذاری کنید.','ok')}catch(e){console.error(e);pendingImport=null;groups.preview.clearLayers();$('importPreview').classList.add('hidden');$('importStatus').textContent='Import ناموفق بود.';toast(e.message||'خطا در Import','error')}finally{$('axisFile').value=''}}
-function updateImportSelectionCount(){const el=$('importSelectedCount');if(!el)return;const all=$('#importCandidateList [data-candidate]'),selected=all.filter(ch=>ch.checked).length;el.textContent=`${selected} از ${all.length} مسیر انتخاب شده`}
-function setImportSelection(checked){$('#importCandidateList [data-candidate]').forEach(ch=>{ch.checked=checked});updateImportSelectionCount()}
+function importCandidateCheckboxes(){return Array.from(document.querySelectorAll('#importCandidateList [data-candidate]'))}
+function updateImportSelectionCount(){const el=$('importSelectedCount');if(!el)return;const all=importCandidateCheckboxes(),selected=all.filter(ch=>ch.checked).length;el.textContent=`${selected} از ${all.length} مسیر انتخاب شده`}
+function setImportSelection(checked){importCandidateCheckboxes().forEach(ch=>{ch.checked=checked});updateImportSelectionCount()}
 function renderImportCandidateList(){const box=$('importCandidateList');if(!box||!pendingImport)return;box.innerHTML='';pendingImport.candidates.forEach((c,i)=>{const row=document.createElement('div');row.className='import-route-row';row.innerHTML=`<label class="route-check"><input type="checkbox" data-candidate="${i}" ${i===0?'checked':''}><span></span></label><div class="route-preview-line" style="background:${PALETTE[i%PALETTE.length]}"></div><input class="route-name-input" data-name="${i}" value="${escapeHtml(c.suggestedName)}" aria-label="نام مسیر"><small>${c.kind} · ${candidateText(c.axis)}</small>`;const ch=row.querySelector('[data-candidate]');ch.addEventListener('change',updateImportSelectionCount);box.appendChild(row)});updateImportSelectionCount()}
 async function applyImport(){if(!pendingImport)return;const selected=[];$$('#importCandidateList [data-candidate]').forEach(ch=>{if(ch.checked){const i=+ch.dataset.candidate,c=pendingImport.candidates[i],name=document.querySelector(`#importCandidateList [data-name="${i}"]`)?.value?.trim()||c.suggestedName;selected.push({c,name,i})}});if(!selected.length){toast('حداقل یک مسیر را انتخاب کنید.','error');return}axisBackup=structuredCloneSafe({axes:state.axes,axisStyles:state.settings.axisStyles,visibleAxes:state.visibleAxes,activeAxis:state.activeAxis,progress:state.progress,features:state.features});await dbSet('axisBackup',axisBackup);for(const {c,name,i} of selected){let key=`route-${Date.now()}-${i}-${Math.random().toString(36).slice(2,7)}`;while(state.axes[key])key+='x';const ax=structuredCloneSafe(c.axis);ax.name=name;state.axes[key]=ax;state.settings.axisStyles[key]={color:PALETTE[Object.keys(state.axes).length%PALETTE.length],width:5,dash:'solid',opacity:1,visible:true};state.visibleAxes.push(key);if(!state.activeAxis)state.activeAxis=key}groups.preview.clearLayers();pendingImport=null;$('importPreview').classList.add('hidden');$('importStatus').textContent=`${selected.length} مسیر اضافه شد.`;renderRouteOptions();renderSettings();resetFrontForm();resetFeatureForm();persist(true);renderAll(true);toast(`${selected.length} مسیر به پروژه اضافه شد.`,'ok')}
 function keepImportOverlay(){if(!pendingImport)return;groups.overlay.clearLayers();pendingImport.candidates.forEach((c,i)=>{if(c.axis?.coords?.length)L.polyline(c.axis.coords,{color:PALETTE[i%PALETTE.length],weight:4,opacity:.8,dashArray:'9 6',smoothFactor:0,interactive:false}).addTo(groups.overlay)});groups.preview.clearLayers();$('importPreview').classList.add('hidden');$('importStatus').textContent=`${pendingImport.fileName} فقط به‌عنوان لایه کمکی نمایش داده شد.`;pendingImport=null;toast('مسیرهای اصلی دست‌نخورده ماندند.','ok')}
