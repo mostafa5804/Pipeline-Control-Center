@@ -29,13 +29,27 @@
 
 روی **سیستم Build** یک‌بار Node.js نصب کنید و `BUILD-EXE.bat` را اجرا کنید. خروجی در پوشه `dist` ساخته می‌شود. سیستم‌هایی که فایل Setup/EXE نهایی را نصب می‌کنند به Python یا Node.js نیاز ندارند.
 
-همچنین Workflow آماده GitHub Actions در `.github/workflows/windows-build.yml` وجود دارد؛ با اجرای دستی Workflow یا Push کردن Tag مثل `v1.0.0`، GitHub روی Windows فایل EXE را Build می‌کند و به‌عنوان Artifact تحویل می‌دهد.
+همچنین Workflow آماده GitHub Actions در `.github/workflows/windows-build.yml` وجود دارد؛ با اجرای دستی Workflow یا Push کردن Tag مثل `V1.0.0`، GitHub روی Windows فایل EXE را Build می‌کند و به‌عنوان Artifact تحویل می‌دهد.
 
 ## سازنده
 
 **مصطفی عرفانی (Mostafa Erfani)**  
-GitHub: **MOSTAFA5804** — https://github.com/MOSTAFA5804
+GitHub: **MOSTAFA5804** — https://github.com/mostafa5804/Pipeline-Control-Center
 
 ## مجوز
 
 برای این نسخه فایل LICENSE تعیین نشده است. قبل از انتشار عمومی، در صورت تمایل نوع مجوز پروژه را مشخص کنید.
+
+
+## انتشار خودکار نسخه Windows با Tag
+
+Workflow در `.github/workflows/windows-build.yml` فقط با Tagهایی که با حرف بزرگ **`V`** شروع شوند اجرا می‌شود؛ برای مثال:
+
+```bash
+git tag V1.0.0
+git push origin V1.0.0
+```
+
+GitHub Actions نسخه را از نام Tag استخراج می‌کند، Windows Installer را می‌سازد و فایل EXE را هم به‌عنوان Artifact و هم در GitHub Release همان Tag منتشر می‌کند.
+
+Repository: https://github.com/mostafa5804/Pipeline-Control-Center
