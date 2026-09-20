@@ -314,6 +314,143 @@ body{font-size:14px}
   .style-row{grid-template-columns:1fr 48px 68px}
 }
 
+
+/* v1.0.0 about fullscreen */
+#settings-about{
+  max-width:none;
+  margin:0;
+  min-height:calc(100vh - var(--header-h) - 60px);
+}
+#settings-about .settings-heading{
+  max-width:1180px;
+  margin:0 auto 22px;
+}
+#settings-about .settings-heading strong{
+  font-size:28px;
+  line-height:1.35;
+  letter-spacing:-.01em;
+}
+#settings-about .settings-heading span{
+  font-size:14px;
+  line-height:1.9;
+}
+#settings-about .about-card{
+  max-width:none;
+  width:100%;
+  min-height:calc(100vh - var(--header-h) - 150px);
+  margin:0;
+  padding:32px 36px 36px;
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+#settings-about .about-brand{
+  gap:16px;
+  margin-bottom:20px;
+}
+#settings-about .about-mark{
+  width:64px;
+  height:64px;
+  border-radius:16px;
+  font-size:16px;
+}
+#settings-about .about-brand strong{
+  font-size:24px;
+  line-height:1.35;
+}
+#settings-about .about-brand span{
+  font-size:13px;
+  margin-top:4px;
+}
+#settings-about .about-lead{
+  max-width:1050px;
+  font-size:15px;
+  line-height:2.05;
+  margin-bottom:22px;
+  color:#334155;
+}
+#settings-about .about-capabilities{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin:14px 0 18px;
+}
+#settings-about .about-capability{
+  min-height:150px;
+  padding:20px;
+  border-radius:16px;
+  background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);
+  box-shadow:0 8px 24px rgba(15,23,42,.045);
+}
+#settings-about .about-capability strong{
+  font-size:14px;
+  line-height:1.55;
+  margin-bottom:8px;
+}
+#settings-about .about-capability span{
+  font-size:12.5px;
+  line-height:1.95;
+}
+#settings-about .about-local-note{
+  max-width:1050px;
+  margin-top:4px;
+  padding:16px 18px;
+  border-radius:14px;
+  font-size:12.5px;
+  line-height:2;
+}
+#settings-about .about-local-note strong{
+  font-size:13px;
+  margin-bottom:4px;
+}
+#settings-about .creator-card{
+  margin-top:auto;
+  padding:18px 20px;
+  border-radius:16px;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  gap:14px;
+}
+#settings-about .creator-card>span{
+  font-size:11px;
+}
+#settings-about .creator-card .creator-copy strong{
+  font-size:15px;
+  line-height:1.5;
+}
+#settings-about .creator-card .creator-copy small{
+  font-size:11px;
+  margin-top:3px;
+}
+#settings-about .github-link{
+  min-height:44px;
+  padding:10px 14px;
+  font-size:11.5px;
+  border-radius:11px;
+}
+#settings-about .github-link svg{
+  width:20px;
+  height:20px;
+}
+@media(max-width:980px){
+  #settings-about .about-capabilities{grid-template-columns:1fr}
+  #settings-about .about-capability{min-height:auto}
+  #settings-about .creator-card{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  #settings-about{min-height:auto}
+  #settings-about .settings-heading strong{font-size:22px}
+  #settings-about .settings-heading span{font-size:11.5px}
+  #settings-about .about-card{min-height:auto;padding:20px 15px;border-radius:16px}
+  #settings-about .about-mark{width:52px;height:52px;font-size:13px}
+  #settings-about .about-brand strong{font-size:19px}
+  #settings-about .about-brand span{font-size:11px}
+  #settings-about .about-lead{font-size:13px;line-height:1.95}
+  #settings-about .about-capability{padding:15px}
+  #settings-about .about-capability strong{font-size:13px}
+  #settings-about .about-capability span{font-size:11.5px}
+  #settings-about .about-local-note{font-size:11.5px}
+}
+
 </style>
 </head>
 <body>
@@ -742,7 +879,7 @@ function onMapClick(e){if(!featurePick)return;featurePick=false;if($('featureLoc
 function parseStationName(name){const s=normalizeDigits(name).toUpperCase().replace(/^(KP|KM|STA|STATION)[:\-]?/,'');const m=s.match(/^(\d{1,3})\+(\d{1,4}(?:\.\d+)?)$/);return m?+m[1]*1000 + +m[2]:NaN}
 function parseKML(text){const xml=new DOMParser().parseFromString(text,'text/xml');if(xml.querySelector('parsererror'))throw new Error('ساختار KML معتبر نیست.');const pms=[...xml.getElementsByTagName('Placemark')],lines=[],seqs=[];let cur=[];const flush=()=>{if(cur.length>=8&&cur.at(-1).m>=500)seqs.push(cur);cur=[]};for(let pi=0;pi<pms.length;pi++){const pm=pms[pi],direct=[...pm.children].find(n=>n.localName==='name'),name=(direct?.textContent||`Feature ${pi+1}`).trim();for(const ls of [...pm.getElementsByTagName('LineString')]){const node=ls.getElementsByTagName('coordinates')[0];if(!node)continue;const coords=node.textContent.trim().split(/\s+/).map(x=>x.split(',')).filter(a=>a.length>=2).map(a=>[+a[1],+a[0]]).filter(p=>Number.isFinite(p[0])&&Number.isFinite(p[1]));if(coords.length>1)lines.push({name,coords})}const pt=pm.getElementsByTagName('Point')[0],m=parseStationName(name);if(pt&&Number.isFinite(m)){const c=pt.getElementsByTagName('coordinates')[0]?.textContent.trim().split(',')||[],lon=+c[0],lat=+c[1];if(Number.isFinite(lat)&&Number.isFinite(lon)){if(cur.length&&m<cur.at(-1).m)flush();if(!cur.length||m>cur.at(-1).m)cur.push({m,lat,lon,kp:name})}}}flush();return{lines,seqs}}
 function lineApproxLength(line){try{return buildGeometricAxis(line.coords,'','').total}catch{return 0}}
-function importCandidates(parsed,fileName){const out=[];let idx=1;for(const seq of [...parsed.seqs].sort((a,b)=>b.at(-1).m-a.at(-1).m||b.length-a.length).slice(0,20)){try{const ax=buildMeasuredAxis(seq,`مسیر ${idx}`,fileName);out.push({candidateId:`station-${idx}`,suggestedName:`مسیر ${idx}`,kind:'Station',axis:ax});idx++}catch{}}const measuredLengths=out.map(x=>x.axis.total);const lines=[...parsed.lines].map((l,i)=>({...l,len:lineApproxLength(l),i})).filter(x=>x.len>50).sort((a,b)=>b.len-a.len).slice(0,40);for(const l of lines){if(measuredLengths.some(x=>Math.abs(x-l.len)<Math.max(50,x*.01)))continue;try{const name=(l.name&&!/^Feature \d+$/i.test(l.name))?l.name:`مسیر ${idx}`;const ax=buildGeometricAxis(l.coords,name,fileName);out.push({candidateId:`line-${l.i}`,suggestedName:name,kind:'LineString',axis:ax});idx++}catch{}}return out}
+function importCandidates(parsed,fileName){parsed=parsed&&typeof parsed==='object'?parsed:{};const seqSource=Array.isArray(parsed.seqs)?parsed.seqs:[],lineSource=Array.isArray(parsed.lines)?parsed.lines:[],out=[];let idx=1;for(const seq of [...seqSource].filter(Array.isArray).sort((a,b)=>(b.at(-1)?.m||0)-(a.at(-1)?.m||0)||b.length-a.length).slice(0,20)){try{const ax=buildMeasuredAxis(seq,`مسیر ${idx}`,fileName);out.push({candidateId:`station-${idx}`,suggestedName:`مسیر ${idx}`,kind:'Station',axis:ax});idx++}catch{}}const measuredLengths=out.map(x=>x.axis.total);const lines=[...lineSource].filter(Boolean).map((l,i)=>({...l,len:lineApproxLength(l),i})).filter(x=>x.len>50).sort((a,b)=>b.len-a.len).slice(0,40);for(const l of lines){if(measuredLengths.some(x=>Math.abs(x-l.len)<Math.max(50,x*.01)))continue;try{const name=(l.name&&!/^Feature \d+$/i.test(l.name))?l.name:`مسیر ${idx}`;const ax=buildGeometricAxis(l.coords,name,fileName);out.push({candidateId:`line-${l.i}`,suggestedName:name,kind:'LineString',axis:ax});idx++}catch{}}return out}
 function drawImportPreview(candidates){groups.preview.clearLayers();const bounds=[];candidates.forEach((c,i)=>{if(!c.axis?.coords?.length)return;const l=L.polyline(c.axis.coords,{color:PALETTE[i%PALETTE.length],weight:5,opacity:.88,dashArray:'10 7',smoothFactor:0,interactive:false}).addTo(groups.preview);bounds.push(l.getBounds())});if(bounds.length){let b=bounds[0];for(let i=1;i<bounds.length;i++)b=b.extend(bounds[i]);map.fitBounds(b,{padding:[35,35],maxZoom:13})}}
 function candidateText(ax){return ax?`${formatKP(ax.total)} · ${ax.coords.length} نقطه${ax.measured?' · Station':''}`:'—'}
 async function importAxisFile(file){if(!file)return;$('importStatus').textContent='در حال بررسی فایل…';try{let text;if(file.name.toLowerCase().endsWith('.kmz')){if(!window.JSZip)throw new Error('JSZip در دسترس نیست.');const z=await JSZip.loadAsync(await file.arrayBuffer()),name=Object.keys(z.files).find(x=>x.toLowerCase().endsWith('.kml'));if(!name)throw new Error('داخل KMZ فایل KML پیدا نشد.');text=await z.files[name].async('text')}else text=await file.text();const parsed=parseKML(text),c=importCandidates(parsed,file.name);if(!c.length)throw new Error('هیچ مسیر LineString یا Station قابل استفاده در فایل پیدا نشد.');pendingImport={fileName:file.name,candidates:c};$('previewFileName').textContent=file.name;$('previewMeta').textContent=`${parsed.lines.length} LineString · ${parsed.seqs.length} توالی Station · ${c.length} کاندید`;renderImportCandidateList();$('importPreview').classList.remove('hidden');$('importStatus').textContent='Preview آماده است؛ مسیرهای فعلی هنوز تغییر نکرده‌اند.';drawImportPreview(c);toast('فایل فقط Preview شد؛ مسیرهای موردنظر را انتخاب و نام‌گذاری کنید.','ok')}catch(e){console.error(e);pendingImport=null;groups.preview.clearLayers();$('importPreview').classList.add('hidden');$('importStatus').textContent='Import ناموفق بود.';toast(e.message||'خطا در Import','error')}finally{$('axisFile').value=''}}
