@@ -24,7 +24,8 @@
     "artifactName": "Pipeline-Control-Center-${version}-${arch}-Setup.${ext}",
     "files": [
       "desktop.html",
-      "electron/**/*"
+      "electron/**/*",
+      "assets/**/*"
     ],
     "directories": {
       "output": "dist"
