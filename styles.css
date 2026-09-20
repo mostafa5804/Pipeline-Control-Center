@@ -432,3 +432,28 @@ body{font-size:14px}
   #settings-about .about-capability span{font-size:11.5px}
   #settings-about .about-local-note{font-size:11.5px}
 }
+
+
+/* v1.0.0 product logo */
+.app-logo{
+  width:40px;
+  height:40px;
+  object-fit:contain;
+  border-radius:10px;
+  background:#fff;
+  box-shadow:0 7px 18px rgba(15,23,42,.10);
+  flex:0 0 auto;
+}
+#settings-about .about-logo{
+  width:96px;
+  height:96px;
+  object-fit:contain;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 12px 30px rgba(15,23,42,.10);
+  flex:0 0 auto;
+}
+@media(max-width:720px){
+  .app-logo{width:34px;height:34px;border-radius:8px}
+  #settings-about .about-logo{width:72px;height:72px;border-radius:14px}
+}
