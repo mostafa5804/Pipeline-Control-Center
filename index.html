@@ -109,6 +109,83 @@ body{font-size:14px}
 /* v1.0.1 final release: import bulk selection + expanded About */
 .import-selection-tools{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:9px 0 2px;padding:7px 8px;border:1px solid #e2e8f0;border-radius:10px;background:#f8fafc}.import-selection-tools>span{font-size:8px;color:#64748b;font-weight:700}.import-selection-actions{display:flex;gap:5px}.import-selection-actions button{border:1px solid #dbe4ee;background:#fff;color:#334155;border-radius:8px;padding:5px 8px;font-size:8px;font-weight:700}.import-selection-actions button:hover{background:#eef2f7}.about-lead{font-size:10px;line-height:2;color:#475569;margin:0 0 14px}.about-capabilities{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.about-capability{border:1px solid #e4eaf0;background:#fbfdff;border-radius:12px;padding:11px}.about-capability strong{display:block;font-size:9.5px;color:#0f172a;margin-bottom:4px}.about-capability span{display:block;font-size:8.2px;line-height:1.8;color:#64748b}.about-local-note{margin-top:12px;padding:10px 11px;border-radius:11px;background:#f0fdfa;border:1px solid #ccfbf1;color:#115e59;font-size:8.5px;line-height:1.9}.about-local-note strong{display:block;font-size:9px;margin-bottom:2px}.creator-card{grid-template-columns:auto minmax(0,1fr) auto}.creator-card .creator-copy{min-width:0}.creator-card .creator-copy strong{display:block;font-size:12px}.creator-card .creator-copy small{display:block;font-size:8px;color:#64748b;margin-top:2px}.github-link span{white-space:nowrap}@media(max-width:760px){.about-capabilities{grid-template-columns:1fr}.import-selection-tools{align-items:flex-start;flex-direction:column}.creator-card{grid-template-columns:1fr}}
 
+
+/* SETTINGS-READABILITY-RESTORE-2026-09-20 */
+.settings-layout{grid-template-columns:232px minmax(0,1fr)}
+.settings-nav{padding:18px 14px;gap:7px}
+.settings-nav button{padding:12px 14px;border-radius:11px;font-size:12.5px;line-height:1.5}
+.settings-content-wrap{padding:30px 36px 110px}
+.settings-pane{max-width:1180px}
+.settings-heading{margin-bottom:20px}
+.settings-heading strong{font-size:21px;line-height:1.5}
+.settings-heading span{font-size:12px;line-height:1.9;margin-top:5px}
+.settings-card{border-radius:16px;padding:20px;margin-bottom:16px}
+.card-title{font-size:13px;margin-bottom:14px}
+.card-title-row{margin-bottom:13px}
+.settings-card label{gap:7px;font-size:12px;line-height:1.6}
+.settings-card input:not([type=checkbox]):not([type=color]):not([type=range]):not([type=file]),
+.settings-card select{min-height:40px;font-size:12.5px;padding:10px 12px;border-radius:10px}
+.logo-grid{gap:14px}
+.logo-input{gap:12px;border-radius:13px;padding:12px}
+.logo-input>div{width:56px;height:56px;border-radius:11px}
+.logo-input span{font-size:12px;line-height:1.7}
+.logo-input input{max-width:170px;font-size:10.5px;padding:6px}
+.toggle-grid{gap:10px}
+.toggle-row{gap:12px;border-radius:12px;padding:12px 14px}
+.toggle-row span{font-size:12px;line-height:1.65}
+.switch{width:42px;height:24px}
+.switch i:after{width:18px;height:18px;top:3px;right:3px}
+.switch input:checked+i:after{transform:translateX(-18px)}
+.style-row{grid-template-columns:minmax(170px,1.6fr) 58px 86px 110px 88px 52px auto;gap:10px;border-radius:12px;padding:12px;margin-bottom:9px}
+.style-row input[type=text]{min-height:40px;border-radius:10px;padding:10px 11px;font-size:12.5px}
+.style-row input[type=color]{width:48px;height:40px;border-radius:10px}
+.style-row input[type=number],.style-row select{min-height:40px;border-radius:10px;padding:9px;font-size:12px}
+.style-actions{gap:5px}
+.style-actions button{width:34px;height:34px;border-radius:9px;font-size:12px}
+.style-preview{height:6px;min-width:46px}
+.data-actions{gap:10px}
+.settings-card .primary-btn,.settings-card .secondary-btn,.settings-card .danger-btn,.settings-card .danger-text-btn{padding:10px 14px;font-size:11.5px;border-radius:10px}
+.data-summary{font-size:12px;line-height:2}
+.settings-card .muted-copy{font-size:12px;line-height:2}
+.settings-save{bottom:22px;left:32px}
+.settings-save .primary-btn{padding:12px 22px;font-size:12.5px;border-radius:11px}
+#settings-about{max-width:none}
+#settings-about .about-card{max-width:none;min-height:calc(100vh - var(--header-h) - 155px);padding:28px}
+#settings-about .about-brand{gap:16px;margin-bottom:20px}
+#settings-about .about-mark{width:64px;height:64px}
+#settings-about .about-brand strong{font-size:22px}
+#settings-about .about-brand span{font-size:12px}
+#settings-about .about-lead{font-size:13.5px;line-height:2.05;margin-bottom:20px}
+#settings-about .about-capabilities{gap:12px;margin:18px 0}
+#settings-about .about-capability{padding:16px;border-radius:14px}
+#settings-about .about-capability strong{font-size:13px;margin-bottom:6px}
+#settings-about .about-capability span{font-size:11.5px;line-height:1.9}
+#settings-about .about-local-note{margin-top:18px;padding:14px 16px;border-radius:13px;font-size:12px;line-height:2}
+#settings-about .about-local-note strong{font-size:13px;margin-bottom:4px}
+#settings-about .creator-card{margin-top:20px;padding:16px;border-radius:14px;gap:14px}
+#settings-about .creator-card>span{font-size:11.5px}
+#settings-about .creator-card .creator-copy strong{font-size:14.5px}
+#settings-about .creator-card .creator-copy small{font-size:11px;margin-top:4px}
+#settings-about .github-link{padding:10px 14px;font-size:11.5px;border-radius:11px}
+@media(max-width:980px){
+  .settings-layout{grid-template-columns:200px minmax(0,1fr)}
+  .settings-content-wrap{padding:24px 22px 105px}
+  .style-row{grid-template-columns:minmax(150px,1fr) 50px 72px 90px 72px}
+}
+@media(max-width:720px){
+  .settings-nav{padding:9px;gap:6px}
+  .settings-nav button{padding:10px 12px;font-size:11.5px}
+  .settings-content-wrap{padding:18px 14px 100px}
+  .settings-heading strong{font-size:19px}
+  .settings-heading span{font-size:11.5px}
+  .settings-card{padding:16px}
+  .settings-card label{font-size:11.5px}
+  .settings-card input:not([type=checkbox]):not([type=color]):not([type=range]):not([type=file]),
+  .settings-card select{font-size:12px}
+  #settings-about .about-card{min-height:auto;padding:18px}
+  #settings-about .about-capabilities{grid-template-columns:1fr}
+}
+/* END-SETTINGS-READABILITY-RESTORE-2026-09-20 */
 </style>
 </head>
 <body>
