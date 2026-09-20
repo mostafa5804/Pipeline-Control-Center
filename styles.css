@@ -89,3 +89,209 @@ body{font-size:14px}
 
 /* v1.0.0 final release: import bulk selection + expanded About */
 .import-selection-tools{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:9px 0 2px;padding:7px 8px;border:1px solid #e2e8f0;border-radius:10px;background:#f8fafc}.import-selection-tools>span{font-size:8px;color:#64748b;font-weight:700}.import-selection-actions{display:flex;gap:5px}.import-selection-actions button{border:1px solid #dbe4ee;background:#fff;color:#334155;border-radius:8px;padding:5px 8px;font-size:8px;font-weight:700}.import-selection-actions button:hover{background:#eef2f7}.about-lead{font-size:10px;line-height:2;color:#475569;margin:0 0 14px}.about-capabilities{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}.about-capability{border:1px solid #e4eaf0;background:#fbfdff;border-radius:12px;padding:11px}.about-capability strong{display:block;font-size:9.5px;color:#0f172a;margin-bottom:4px}.about-capability span{display:block;font-size:8.2px;line-height:1.8;color:#64748b}.about-local-note{margin-top:12px;padding:10px 11px;border-radius:11px;background:#f0fdfa;border:1px solid #ccfbf1;color:#115e59;font-size:8.5px;line-height:1.9}.about-local-note strong{display:block;font-size:9px;margin-bottom:2px}.creator-card{grid-template-columns:auto minmax(0,1fr) auto}.creator-card .creator-copy{min-width:0}.creator-card .creator-copy strong{display:block;font-size:12px}.creator-card .creator-copy small{display:block;font-size:8px;color:#64748b;margin-top:2px}.github-link span{white-space:nowrap}@media(max-width:760px){.about-capabilities{grid-template-columns:1fr}.import-selection-tools{align-items:flex-start;flex-direction:column}.creator-card{grid-template-columns:1fr}}
+
+
+/* v1.0.0 readability pass: settings workspace */
+.settings-layout{
+  grid-template-columns:232px minmax(0,1fr);
+  background:#f3f6fa;
+}
+.settings-nav{
+  padding:20px 14px;
+  gap:7px;
+  box-shadow:inset -1px 0 rgba(255,255,255,.05);
+}
+.settings-nav button{
+  min-height:44px;
+  padding:11px 13px;
+  border-radius:11px;
+  font-size:11.5px;
+  line-height:1.45;
+  letter-spacing:.01em;
+}
+.settings-content-wrap{
+  padding:30px 34px 110px;
+}
+.settings-pane{
+  max-width:1180px;
+}
+.settings-heading{
+  margin-bottom:20px;
+}
+.settings-heading strong{
+  font-size:21px;
+  line-height:1.5;
+}
+.settings-heading span{
+  font-size:12px;
+  line-height:1.9;
+  margin-top:5px;
+}
+.settings-card{
+  border-radius:16px;
+  padding:19px 20px;
+  margin-bottom:15px;
+  box-shadow:0 7px 22px rgba(15,23,42,.035);
+}
+.card-title{
+  font-size:13px;
+  line-height:1.55;
+  margin-bottom:13px;
+}
+.card-title-row{
+  margin-bottom:12px;
+}
+.settings-card label,
+.settings-card .full-label,
+.settings-card .form-grid label{
+  font-size:11px;
+  line-height:1.6;
+  gap:6px;
+}
+.settings-card input,
+.settings-card select,
+.settings-card textarea,
+.settings-content-wrap .form-grid input,
+.settings-content-wrap .form-grid select,
+.settings-content-wrap .full-label input{
+  min-height:40px;
+  padding:10px 11px;
+  border-radius:10px;
+  font-size:12.5px;
+  line-height:1.45;
+}
+.settings-card textarea{
+  min-height:96px;
+  resize:vertical;
+}
+.toggle-grid{
+  gap:10px;
+}
+.toggle-row{
+  min-height:48px;
+  padding:10px 12px;
+  border-radius:11px;
+}
+.toggle-row span{
+  font-size:11.5px;
+  line-height:1.5;
+}
+.switch{
+  width:40px;
+  height:23px;
+}
+.switch i:after{
+  width:17px;
+  height:17px;
+}
+.switch input:checked+i:after{
+  transform:translateX(-17px);
+}
+.logo-grid{
+  gap:13px;
+}
+.logo-input{
+  min-height:68px;
+  padding:11px;
+}
+.logo-input>div{
+  width:50px;
+  height:50px;
+}
+.logo-input span{
+  font-size:11px;
+}
+.logo-input input{
+  max-width:170px;
+  font-size:10px;
+}
+.style-row{
+  grid-template-columns:minmax(155px,1.6fr) 58px 82px 110px 82px 52px auto;
+  gap:9px;
+  padding:10px;
+  border-radius:11px;
+  margin-bottom:8px;
+}
+.style-row input[type=text]{
+  font-size:11.5px;
+  min-height:38px;
+}
+.style-row input[type=number],
+.style-row select{
+  font-size:11px;
+  min-height:38px;
+}
+.style-row input[type=color]{
+  width:48px;
+  height:36px;
+}
+.style-actions button{
+  width:32px;
+  height:32px;
+}
+.data-summary{
+  font-size:11.5px;
+  line-height:2;
+}
+.data-actions{
+  gap:9px;
+}
+.settings-save{
+  bottom:22px;
+  left:34px;
+}
+.settings-save .primary-btn{
+  min-height:43px;
+  padding:11px 20px;
+  font-size:11.5px;
+}
+.checkbox-label{
+  min-height:46px;
+  padding:10px 12px;
+  font-size:11px!important;
+}
+.checkbox-label input{
+  width:17px;
+  height:17px;
+}
+.about-lead{
+  font-size:11.5px;
+  line-height:2;
+}
+.about-capability{
+  padding:13px;
+}
+.about-capability strong{
+  font-size:11px;
+}
+.about-capability span,
+.about-local-note{
+  font-size:10px;
+}
+.creator-card .creator-copy strong{
+  font-size:13px;
+}
+.creator-card .creator-copy small{
+  font-size:9.5px;
+}
+.github-link{
+  min-height:38px;
+  font-size:10px;
+}
+@media(max-width:1100px){
+  .settings-layout{grid-template-columns:205px minmax(0,1fr)}
+  .settings-content-wrap{padding:24px 22px 100px}
+  .style-row{grid-template-columns:minmax(140px,1.4fr) 52px 70px 96px 72px}
+  .style-row>.style-actions{grid-column:1/-1;justify-content:flex-end}
+}
+@media(max-width:720px){
+  .settings-layout{display:block}
+  .settings-nav{padding:9px;gap:5px}
+  .settings-nav button{min-height:38px;padding:9px 11px;font-size:10.5px}
+  .settings-content-wrap{padding:18px 12px 100px}
+  .settings-heading strong{font-size:18px}
+  .settings-heading span{font-size:10.5px}
+  .settings-card{padding:15px 13px}
+  .settings-card input,.settings-card select,.settings-content-wrap .form-grid input,.settings-content-wrap .form-grid select{font-size:12px}
+  .style-row{grid-template-columns:1fr 48px 68px}
+}
